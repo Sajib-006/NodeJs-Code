@@ -12,3 +12,5 @@ const interval = setInterval(() => {
 
 console.log(__dirname);
 console.log(__filename);
+
+console.log("hi");
