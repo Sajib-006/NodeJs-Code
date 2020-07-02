@@ -6,7 +6,10 @@ const ws = fs.createWriteStream('./docs/blog4.txt');
 rs.on('data',(chunk) =>{
     console.log('.....NEW CHUNK.....');
     console.log(chunk);
-    ws.write('.....NEW CHUNK.....');
+    ws.write('------------------------NEW CHUNK------------------------------');
     ws.write(chunk);
 })
+
+//piping
+//rs.pipe(ws)
 
