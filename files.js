@@ -1,14 +1,14 @@
 const fs = require('fs');
 
 //reading files
-// fs.readFile('./docs/blog1.txt', (err, data) =>{
-//     if(err){
-//         console.log(err);
-//     }
-//     console.log(data);
-//     console.log(data.toString());
+fs.readFile('./docs/blog1.txt', (err, data) =>{
+    if(err){
+        console.log(err);
+    }
+    console.log(data);
+    console.log(data.toString());
 
-// })
+})
 
 console.log("hello"); //this will executed before showing file data 
 
@@ -38,6 +38,7 @@ if(!fs.existsSync('./dir1')){
     })
 }
 
+
 //deleting files
 if(fs.existsSync('./docs/deleteme.txt')){
     fs.unlink('./docs/deleteme.txt', (err)=>{
@@ -45,3 +46,4 @@ if(fs.existsSync('./docs/deleteme.txt')){
     })
     console.log('file deleted.');
 }
+
