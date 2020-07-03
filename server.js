@@ -1,7 +1,12 @@
 const http = require('http');
 const fs = require('fs');
+const _ = require('lodash');
 
 const server = http.createServer((req, res) =>{
+
+    const num = _.random(0,24);
+    console.log(num);
+    
     console.log('Request made.');
     console.log(req.url , req.method); //comma gives a space in-between parameters
     //console.log(res);
@@ -20,9 +25,9 @@ const server = http.createServer((req, res) =>{
             path += 'about.html';
             res.statusCode = 200;
             break;
-        case '/aboutme':
-            res.setHeader('Location', '/about');
+        case '/aboutmed':
             res.statusCode = 301;
+            res.setHeader('Location', '/about');
             res.end();
             break;
         default:

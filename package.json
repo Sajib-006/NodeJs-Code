@@ -1,0 +1,26 @@
+{
+  "name": "crush-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "files.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sajib-006/NodeJs-Code.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sajib-006/NodeJs-Code/issues"
+  },
+  "homepage": "https://github.com/Sajib-006/NodeJs-Code#readme",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
