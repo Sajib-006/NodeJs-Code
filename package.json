@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Sajib-006/NodeJs-Code#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "lodash": "^4.17.15"
   }
 }
