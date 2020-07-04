@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 //register view engine 
-app.set('view Engine', 'ejs');
+app.set('view engine', 'ejs');
 
 //listen for request
 app.listen(3000);
@@ -13,11 +13,12 @@ app.listen(3000);
 app.get('/', (req,res) =>{
     //res.send('<p> Home page </p>');   //send() doesn't need to set header like write()
     //res.sendFile('./views/index.html', { root: __dirname}); //here path is to be real path,so root is needed
-    app.render('index2');
+    res.render('index2');
 })
 
 app.get('/about', (req,res) =>{
-    res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
+    //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
+    res.render('about2');
 })
 
 app.get('/about-us', (req,res) =>{
@@ -25,5 +26,6 @@ app.get('/about-us', (req,res) =>{
 })
 
 app.use( (req,res) =>{
-    res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
+    //res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
+    res.status(404).render('404x');
 })
