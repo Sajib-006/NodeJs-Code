@@ -4,9 +4,16 @@ const _ = require('lodash');
 
 const server = http.createServer((req, res) =>{
 
+    //lodash functions
     const num = _.random(0,24);
     console.log(num);
-    
+
+    const greet = _.once(()=>{
+        console.log('hello');
+    })
+    greet();
+    greet();  //runs only once ,so it not executed.
+
     console.log('Request made.');
     console.log(req.url , req.method); //comma gives a space in-between parameters
     //console.log(res);
