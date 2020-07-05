@@ -5,9 +5,6 @@
 	<title> Blog House | <%= title %></title>
 </head>
 <body>
-
-    <% const name= 'maria' %>
-
 	<nav>
 		<div class="site-title">
             <h2>Blog House</h2>
@@ -21,8 +18,17 @@
         </ul>
     </nav>
 
-    <div class="blogs content">
-        <h2>All blogs</h2>
+    <div class="create-blog content">
+        <h2>Create your blog</h2>
+        <form>
+            <label for="title">Blog title:</label>
+            <input type="text" id="title" required>
+            <label for="snippet">Blog snippet</label>
+            <input type="text" id="snippet" required>
+            <label for="body">Blog body:</label>
+            <textarea id="body" required>Write your blog here...</textarea>
+            <button> Submit</button>
+        </form>
     </div>
     
 	
