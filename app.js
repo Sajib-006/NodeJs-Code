@@ -19,7 +19,7 @@ app.get('/', (req,res) =>{
         {title: 'Taking balance diet', snippet: 'Health'},
         {title: 'How to learn node.js', snippet: 'Programming | Node.js'},
     ];
-    res.render('index2',{title: 'Home'});
+    res.render('index2',{title: 'Home', blogs: 'blogs'});
 })
 
 app.get('/about', (req,res) =>{
@@ -32,9 +32,9 @@ app.get('/blogs/create', (req,res) =>{
     res.render('create',{title: 'Create new blog'});
 })
 
-app.get('/about-us', (req,res) =>{
-    res.redirect('/about');
-})
+// app.get('/about-us', (req,res) =>{
+//     res.redirect('/about');
+// })
 
 app.use( (req,res) =>{
     //res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
