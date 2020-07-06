@@ -1,4 +1,6 @@
 const express = require('express');
+// const ejsLint = require('ejs-lint');
+// ejsLint(text, options);
 
 //express app
 const app = express();
@@ -17,9 +19,21 @@ app.get('/', (req,res) =>{
         {title: 'How to keep fit', snippet: 'Health'},
         {title: 'How to program in C', snippet: 'Programming'},
         {title: 'Taking balance diet', snippet: 'Health'},
-        {title: 'How to learn node.js', snippet: 'Programming | Node.js'},
+        {title: 'How to learn node.js', snippet: 'Programming | Node.js'}
     ];
-    res.render('index2',{title: 'Home', blogs: 'blogs'});
+    var articles = [
+        {title: "Man Discovers Different Opinion", author: "Reginald", date: "9/2/45"},
+        {title: "Tigers Aren't Great Pets", author: "Simon", date: "4/13/95"},
+        {title: "Eating Cake for Breakfast", author: "Katie", date: "8/20/13"}
+    ];
+    var comments = [
+        {author: "Adam", content: "I personally have never encountered a different opinion"},
+        {author: "Ryan", content: "But what about Ligers? Are they good pets?"},
+        {author: "Nick", content: "This woman is a genius!"}
+    ];
+    var color='red';
+    res.render('index2',{title: 'Home', articles: articles, color:'green'});
+    //res.render('index2',{title: 'Home', blogs: 'blogs', articles: 'articles',comments: 'comments'});
 })
 
 app.get('/about', (req,res) =>{
