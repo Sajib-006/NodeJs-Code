@@ -1,28 +1,10 @@
 <html lang="en">
-<head>
-	<meta charset="utf-8"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.8">
-	<title> Blog House | <%= title %></title>
-</head>
+<%- include('./partials/header.ejs') %>
 <body>
 
     <% const name= 'maria' %>
 
-	<nav>
-		<div class="site-title">
-            <h2> <a href="/"> Blog House </a></h2>
-            <p> A blog website</p>
-            <%= name %>
-            <%= name %>
-            <%= color %>
-            <%= articles[0].title %>
-        </div>
-        <ul>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">New Blog</a></li>
-        </ul>
-    </nav>
+	<%- include('./partials/nav.ejs') %>
 
     <div class="blogs content">
         <h2>All blogs</h2>
@@ -34,7 +16,7 @@
             <% } %>
             
     </div>
-    
+    <%- include('./partials/footer.ejs') %>
 	
 </body>
 </html>
