@@ -1,6 +1,7 @@
 const express = require('express');
 // const ejsLint = require('ejs-lint');
 // ejsLint(text, options);
+const morgan = require('morgan');
 
 //express app
 const app = express();
@@ -11,14 +12,23 @@ app.set('view engine', 'ejs');
 //listen for request
 app.listen(4000);
 
+//middleware & static files
+app.use(express.static('public'));
 //use of middleware
-app.use((req, res, next)=>{
-    console.log('New request made:');
-    console.log('Host: ', req.hostname);
-    console.log('Path: ',req.path);
-    console.log('Method: ', req.method);
-    next();
-})
+// app.use((req, res, next)=>{
+//     console.log('New request made:');
+//     console.log('Host: ', req.hostname);
+//     console.log('Path: ',req.path);
+//     console.log('Method: ', req.method);
+//     next();
+// })
+
+//use of 3rd party app morgan instead of next() and req.properties
+// app.use(morgan('dev'));
+ app.use(morgan('tiny'));
+// app.use(morgan('short'));
+// app.use(morgan("combined"));
+// app.use(morgan('common'));
 
 
 
@@ -47,10 +57,10 @@ app.get('/', (req,res) =>{
     //res.render('index2',{title: 'Home', blogs: 'blogs', articles: 'articles',comments: 'comments'});
 })
 
-app.use((req,res,next)=>{
-    console.log('next middleware .....');
-    next();
-})
+// app.use((req,res,next)=>{
+//     console.log('next middleware .....');
+//     next();
+// })
 
 app.get('/about', (req,res) =>{
     //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
