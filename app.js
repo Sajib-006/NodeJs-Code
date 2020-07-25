@@ -11,6 +11,17 @@ app.set('view engine', 'ejs');
 //listen for request
 app.listen(4000);
 
+//use of middleware
+app.use((req, res, next)=>{
+    console.log('New request made:');
+    console.log('Host: ', req.hostname);
+    console.log('Path: ',req.path);
+    console.log('Method: ', req.method);
+    next();
+})
+
+
+
 //app will be executed top to bottom, so 404 page is at last when no expression will be executed.
 app.get('/', (req,res) =>{
     //res.send('<p> Home page </p>');   //send() doesn't need to set header like write()
@@ -34,6 +45,11 @@ app.get('/', (req,res) =>{
     var color='red';
     res.render('index2',{title: 'Home', articles: articles, color:'green'});
     //res.render('index2',{title: 'Home', blogs: 'blogs', articles: 'articles',comments: 'comments'});
+})
+
+app.use((req,res,next)=>{
+    console.log('next middleware .....');
+    next();
 })
 
 app.get('/about', (req,res) =>{
