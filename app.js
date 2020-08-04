@@ -3,6 +3,7 @@ const express = require('express');
 // ejsLint(text, options);
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Blog = require('./models/blogs');
 
 //express app
 const app = express();
@@ -38,7 +39,21 @@ app.use(express.static('public'));
 // app.use(morgan("combined"));
 // app.use(morgan('common'));
 
-
+//mongoose and mongo sandbox routes
+app.get('/add-blog', (req,res)=>{
+    const blog = new Blog({
+        title: 'first blog',
+        snippet: 'this is my first blog in Blog House',
+        body: 'First blog is always impressive, exciting. Guys, please response my blog and give suggestion how i can improve my blog-writing skill.Thanks in advance!'
+    });
+    blog.save()
+        .then((result)=>{
+            res.send(result);
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+})
 
 //app will be executed top to bottom, so 404 page is at last when no expression will be executed.
 app.get('/', (req,res) =>{
