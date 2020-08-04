@@ -55,6 +55,24 @@ app.get('/add-blog', (req,res)=>{
         });
 })
 
+app.get('/all-blogs',(req,res)=>{
+    Blog.find()
+        .then((result)=>{
+            res.send(result);
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
+})
+
+app.get('/one-blog',(req,res)=>{
+    Blog.findById('5f29509412fe5043ac5acf9e').then((result)=>{
+        res.send(result);
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
+
 //app will be executed top to bottom, so 404 page is at last when no expression will be executed.
 app.get('/', (req,res) =>{
     //res.send('<p> Home page </p>');   //send() doesn't need to set header like write()
