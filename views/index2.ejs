@@ -9,10 +9,10 @@
     <div class="blogs content">
         <h2>All blogs</h2>
         
-            <% for(var i=0; i<articles.length; i++){ %>
-                <h1><%= articles[i].title %></h1>
-                <h3><%= articles[i].author %></h3>
-                <h4><%= articles[i].date %></h4>
+            <% for(var i=0; i<blogs.length; i++){ %>
+                <h1><%= blogs[i].title %></h1>
+                <h3><%= blogs[i].snippet %></h3>
+                <h4><%= blogs[i].body %></h4>
             <% } %>
             
     </div>
