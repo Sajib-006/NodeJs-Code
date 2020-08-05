@@ -10,9 +10,12 @@
         <h2>All blogs</h2>
         
             <% for(var i=0; i<blogs.length; i++){ %>
-                <h1><%= blogs[i].title %></h1>
-                <h3><%= blogs[i].snippet %></h3>
-                <h4><%= blogs[i].body %></h4>
+                <a class="single" href="/blogs/<%= blogs[i]._id %>" > 
+                    <h1><%= blogs[i].title %></h1>
+                    <h3><%= blogs[i].snippet %></h3>
+                  
+                </a>
+                
             <% } %>
             
     </div>

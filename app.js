@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blogs');
+const { render } = require('ejs');
 
 //express app
 const app = express();
@@ -129,8 +130,24 @@ app.post('/blogs',(req,res)=>{
         console.log(err);
     });
 })
+
+app.get('/blogs/:id', (req,res)=>{
+    const id = req.params.id;
+    //console.log(id);
+    Blog.findById(id).then((result)=>{
+        res.render('full_blog',{title: 'See full blog', blog: result });
+    }).catch((err)=>{
+        console.log(err);
+    });
+})
+
+app.get('/rate',(req,res)=>{
+    res.render('rate',{title:' Rate Us'});
+})
+
 app.get('/blogs/create', (req,res) =>{
     //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
+    //mongoose.Types.ObjectId("5f29502d12fe5043ac5acf9d");
     res.render('create',{title: 'Create new blog'});
 })
 
