@@ -5,6 +5,7 @@
           padding: 0 20px;
           font-family: 'Noto Serif', serif;
           max-width: 1200px;
+          /*background-color: rgb(237, 237, 245);*/
         }
         p, h1, h2, h3, a, ul{
           margin: 0;
@@ -18,8 +19,9 @@
           justify-content: space-between;
           margin-bottom: 60px;
           padding-bottom: 10px;
-          border-bottom: 1px solid #ddd;
+          border-bottom: 2px solid rgb(163, 130, 130);
           text-transform: uppercase;
+          /*background-color: rgb(201, 201, 109);*/
         }
         nav ul{
           display: flex;
@@ -34,13 +36,21 @@
           font-size: 3em;
         }
         nav p, nav a{
-          color: #777;
-          font-weight: 300;
+          color: rgb(201, 8, 8);
+          font-weight: 350;
+        }
+         #blog-house{
+            text-decoration-style: wavy;
+            text-transform: capitalize;
+            text-shadow: mediumblue;
         }
         footer{
           color: #777;
           text-align: center;
           margin: 80px auto 20px;
+        }
+        h1{
+            color: chocolate;
         }
         h2{
           margin-bottom: 40px;
@@ -53,25 +63,39 @@
           margin-left: 20px;
         }
         /* index styles */
-        .blogs.single{
-            display: block;
-            margin: 40 px ;
-            padding-left: 20 px;
+        .blogs a {
+            display: table;
+            
+            padding-left: 3%;
+            border-width:0 50px;
             border-left: blue;
-            border-bottom: darkorange;
-            border-right-color: darkred;
+            
         }
-        .blogs a h1{
-            background-color: gray;
+        .blogs h2{
+            color: rgb(92, 92, 8);
+            
+        }
+        
+        
+        #overview{
+            
+            border-width:0 5px;
+            border-left: blue;
         }
         .blogs a:hover h1{
-            color: chocolate;
+            color: maroon;
         }
         /* details styles */
         .full-blog{
             border-left: blue;
            /*background-color: gray;*/
            color:crimson;
+        }
+        #full-body{
+            border-left:solid red;
+            border-width:0 5px;
+            margin-top: 5%;
+            padding-left: 3%;
         }
         /* create styles */
         

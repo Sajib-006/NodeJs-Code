@@ -6,11 +6,11 @@
 
 	<%- include('./partials/nav.ejs') %>
 
-    <div class="blogs content">
-        <h2>All blogs</h2>
+    <div class="blogs">
+        <h2><u>All blogs</u></h2>
         
             <% for(var i=0; i<blogs.length; i++){ %>
-                <a class="single" href="/blogs/<%= blogs[i]._id %>" > 
+                <a id="overview" class="single" href="/blogs/<%= blogs[i]._id %>" > 
                     <h1><%= blogs[i].title %></h1>
                     <h3><%= blogs[i].snippet %></h3>
                   
