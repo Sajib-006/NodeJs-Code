@@ -10,9 +10,26 @@
         <div class = "body content">
             <p id="full-body"><%= blog.body %></p>
         </div>
-        
+        <div>
+            <a class="delete" id="del" doc="<%= blog._id %>">delete</a>
+        </div> 
     </div>
     <%- include('./partials/footer.ejs') %>
-	
+	<script>
+        var element = document.getElementById("del")
+        var attr= element.getAttribute("doc");
+        console.log(attr);
+        //alert(x);
+        // const trashcan = document.querySelector('a.delete');
+        element.addEventListener('click', (e)=>{
+            //console.log(trashcan.datset.doc);
+            const endpoint = '/blogs/'+attr;
+            console.log(endpoint);
+            fetch(endpoint,{method:'DELETE'})
+            .then((response)=>response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(err=> console.log(err));
+        });
+    </script>
 </body>
 </html>
