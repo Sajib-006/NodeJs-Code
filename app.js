@@ -1,31 +1,33 @@
-const express = require('express');
+const express = require("express");
 // const ejsLint = require('ejs-lint');
 // ejsLint(text, options);
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const Blog = require('./models/blogs');
-const { render } = require('ejs');
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+const blogRoutes = require("./routes/blogroutes");
+const { render } = require("ejs");
 
 //express app
 const app = express();
 
 //connect to mongodb
-const dbURI = 'mongodb+srv://dip:jvk2okhskEJpfopJ@nodejs.1k7mq.mongodb.net/NodeJS?retryWrites=true&w=majority';
+const dbURI =
+  "mongodb+srv://dip:jvk2okhskEJpfopJ@nodejs.1k7mq.mongodb.net/NodeJS?retryWrites=true&w=majority";
 //using mongoose
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result)=> app.listen(4000))
-    .catch((err)=> console.log(err));
+mongoose
+  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((result) => app.listen(4000))
+  .catch((err) => console.log(err));
 
-//register view engine 
-app.set('view engine', 'ejs');
+//register view engine
+app.set("view engine", "ejs");
 
 //listen for request
 //app.listen(4000);
 
 //middleware & static files
-app.use(express.static('public'));
+app.use(express.static("public"));
 //middeleware for embedding all information in req.body
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 //use of middleware
 // app.use((req, res, next)=>{
 //     console.log('New request made:');
@@ -37,7 +39,7 @@ app.use(express.urlencoded({extended: true}));
 
 //use of 3rd party app morgan instead of next() and req.properties
 // app.use(morgan('dev'));
- app.use(morgan('tiny'));
+app.use(morgan("tiny"));
 // app.use(morgan('short'));
 // app.use(morgan("combined"));
 // app.use(morgan('common'));
@@ -105,67 +107,25 @@ app.use(express.urlencoded({extended: true}));
 //     console.log('next middleware .....');
 //     next();
 // })
-app.get('/',(req,res)=>{
-    res.redirect('/all-blogs');
+app.get("/", (req, res) => {
+  res.redirect("/blogs");
 });
 
-app.get('/all-blogs',(req,res)=>{
-    Blog.find().sort({createdAt : -1}).then((result)=>{
-        res.render('index2',{title: 'See Blogs', blogs: result });
-    }).catch((err)=>{
-        console.log(err);
-    });
+app.get("/about", (req, res) => {
+  //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
+  res.render("about2", { title: "About" });
 });
-app.get('/about', (req,res) =>{
-    //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
-    res.render('about2',{title: 'About'});
-})
 
 //handling post method
-app.post('/blogs',(req,res)=>{
-    const blog = new Blog(req.body);
-    blog.save().then((result)=>{
-        res.redirect('/all-blogs');
-    }).catch((err)=>{
-        console.log(err);
-    });
-})
 
-app.get('/blogs/:id', (req,res)=>{
-    const id = req.params.id;
-    //console.log(id);
-    Blog.findById(id).then((result)=>{
-        res.render('full_blog',{title: 'See full blog', blog: result });
-    }).catch((err)=>{
-        console.log(err);
-    });
-})
+app.get("/rate", (req, res) => {
+  res.render("rate", { title: " Rate Us" });
+});
 
-app.delete('/blogs/:id',(req,res)=>{
-    const id =req.params.id;
-    Blog.findByIdAndDelete(id).then(result=>{
-        res.json({redirect: '/all-blogs'})
-        
-    })
-    .catch(err=>{
-        console.log(err);
-    });
-})
-app.get('/rate',(req,res)=>{
-    res.render('rate',{title:' Rate Us'});
-})
+//use of routes:blog routes
+app.use(blogRoutes);
 
-app.get('/blogs/create', (req,res) =>{
-    //res.sendFile('./views/about.html', { root: __dirname}); //here path is to be real path,so root is needed
-    //mongoose.Types.ObjectId("5f29502d12fe5043ac5acf9d");
-    res.render('create',{title: 'Create new blog'});
-})
-
-// app.get('/about-us', (req,res) =>{
-//     res.redirect('/about');
-// })
-
-app.use( (req,res) =>{
-    //res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
-    res.status(404).render('404x',{title: '404'});
-})
+app.use((req, res) => {
+  //res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
+  res.status(404).render("404x", { title: "404" });
+});
