@@ -20,7 +20,8 @@ const full_blog = (req, res) => {
       res.render("blogs/full_blog", { title: "See full blog", blog: result });
     })
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
+      res.status(404).render("404x", { title: "Blog not found" });
     });
 };
 
