@@ -123,7 +123,7 @@ app.get("/rate", (req, res) => {
 });
 
 //use of routes:blog routes
-app.use(blogRoutes);
+app.use("/blogs", blogRoutes);
 
 app.use((req, res) => {
   //res.status(400).sendFile('./views/404.html', { root: __dirname}); //here path is to be real path,so root is needed
